@@ -8,7 +8,7 @@
 const mongoose = require("mongoose");
 
 // 设置默认 mongoose 连接
-const mongoDB = "mongodb://127.0.0.1/my_database";
+const mongoDB = "mongodb://127.0.0.1/local_library";
 mongoose.connect(mongoDB);
 // 让 mongoose 使用全局 Promise 库
 mongoose.Promise = global.Promise;
