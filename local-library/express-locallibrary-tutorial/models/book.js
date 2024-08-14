@@ -4,16 +4,16 @@ const Schema = mongoose.Schema;
 
 const BookSchema = new Schema({
     title: { type: String, required: true },
-    author: { type: Schema.Types.ObjectId, ref: "Author", required: true },
+    author: { type: Schema.ObjectId, ref: "Author", required: true },
     summary: { type: String, required: true },
     isbn: { type: String, required: true },
-    genre: [{ type: Schema.Types.ObjectId, ref: "Genre" }],
+    genre: [{ type: Schema.ObjectId, ref: "Genre" }],
 });
 
-// 虚拟属性'url'：藏书 URL
+// Virtual for this book instance URL.
 BookSchema.virtual("url").get(function () {
     return "/catalog/book/" + this._id;
 });
 
-// 导出 Book 模块
+// Export model.
 module.exports = mongoose.model("Book", BookSchema);
